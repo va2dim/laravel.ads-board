@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/login', 'SessionController@create')->name('login');
+Route::post('/login', 'SessionController@store');
+Route::get('/logout', 'SessionController@destroy');
+
+Route::get('/', 'AdsController@index')->name('home');
+Route::get('/{id}', 'AdsController@show');
+Route::get('/edit/', 'AdsController@create');
+Route::get('/edit/{id}', 'AdsController@edit');
+Route::post('/edit/{id}', 'AdsController@store');
+Route::post('/delete/{id}', 'AdsController@destroy');
+
+
