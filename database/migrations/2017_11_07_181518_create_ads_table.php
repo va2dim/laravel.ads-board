@@ -17,7 +17,7 @@ class CreateAdsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->integer('author_name');
+            $table->integer('user_id');
             $table->timestamp('created_at');
         });
     }

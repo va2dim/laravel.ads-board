@@ -1,7 +1,7 @@
 
 <div class="blog-masthead">
     <div class="container">
-        <nav class="nav">
+        <nav class="nav col-sm-12">
             <a class="nav-link active" href="/">Home</a>
 
             @if (Auth::check())
