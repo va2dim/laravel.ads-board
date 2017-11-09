@@ -3,6 +3,7 @@
     <p class="blog-post-meta">Publicated by {{ $ad->user->name }}, {{ $ad->created_at->toFormattedDateString() }}
         @if(Auth::check())
             @if(Auth::User()->name == $ad->user->name)
+                <a class="btn btn-primary" href="/edit/{{ $ad->id }}">Edit</a>
                 <a class="btn btn-danger" href="/delete/{{ $ad->id }}">Delete</a>
             @endif
         @endif

@@ -21,7 +21,7 @@ Route::get('/delete/{id}', 'AdsController@destroy');
 Route::get('/edit', 'AdsController@edit');
 Route::post('/edit', 'AdsController@store');
 Route::get('/edit/{id}', 'AdsController@edit');
-Route::post('/edit/{id}', 'AdsController@store');
+//Route::post('/edit/{id}', 'AdsController@store');
 
 Route::get('/{id}', 'AdsController@show');
 

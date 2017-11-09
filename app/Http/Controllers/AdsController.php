@@ -23,11 +23,10 @@ class AdsController extends Controller
 
     }
 
-    public function edit()
+    public function edit(Ad $id)
     {
-        return view('ads.edit');
 
-
+        return view('ads.edit', ['ad' => $id]);
     }
 
     public function store()
@@ -37,12 +36,18 @@ class AdsController extends Controller
           'description' => 'required',
         ]);
 
-        $ad = Ad::create([
-          'title' => request('title'),
-          'description' => request('description'),
-          'user_id' => auth()->user()->id,
-        ]);
-
+        if (request('id')) {
+            $ad = Ad::create([
+              'title' => request('title'),
+              'description' => request('description'),
+              'user_id' => auth()->user()->id,
+            ]);
+        } else {
+            $ad = Ad::find($id);
+            $ad->title = request('title');
+            $ad->description = request('description');
+            $ad->save();
+        }
 
         return redirect('/'.$ad->id);
     }

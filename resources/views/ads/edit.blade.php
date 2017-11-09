@@ -11,13 +11,19 @@
             @include('layouts.errors')
 
                 <div class="form-group">
-                    <input class="form-control" readonly type="number" id="id" name="id" placeholder="Ads ID" value="">
-                    <input class="form-control" type="text" id="title" name="title" placeholder="Title" value="">
-                    <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
+                    <input class="form-control" readonly hidden type="number" id="id" name="id" placeholder="Ads ID" value="{{ $ad->id }}">
+                    <input class="form-control" type="text" id="title" name="title" placeholder="Title" value="{{ $ad->title }}">
+                    <textarea class="form-control" id="description" name="description" placeholder="Description">{{ $ad->description }}</textarea>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn
+                        @if ($ad)
+                            btn-primary"> Edit
+                        @else
+                            btn-success"> Create
+                        @endif
+                    </button>
                 </div>
 
 
