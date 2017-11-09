@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
-    public function author_name()
+    public function user()
     {
         return $this->BelongsTo(User::class);
     }
