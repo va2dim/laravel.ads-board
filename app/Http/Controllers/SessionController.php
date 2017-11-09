@@ -12,11 +12,6 @@ class SessionController extends Controller
         $this->middleware('guest')->except(['destroy']);
     }
 
-    public function create()
-    {
-        return view('sessions.create');
-    }
-
     public function store()
     {
 

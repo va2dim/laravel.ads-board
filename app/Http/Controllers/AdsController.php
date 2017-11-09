@@ -3,24 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Ad;
-use Illuminate\Http\Request;
 
 class AdsController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index', 'show']);
 
     }
 
     public function index()
     {
+        $ads = Ad::latest()->Paginate(5);
 
-        $ads = Ad::latest()->simplePaginate(5);
-        //var_dump($ads[1]->created_at);
-        //die;
         return view('ads.index', compact('ads'));
-
     }
 
     public function edit(Ad $id)
@@ -37,16 +33,15 @@ class AdsController extends Controller
         ]);
 
         if (request('id')) {
+            $ad = Ad::find(request('id'));
+            $ad->title = request('title');
+            $ad->description = request('description');
+        } else {
             $ad = Ad::create([
               'title' => request('title'),
               'description' => request('description'),
               'user_id' => auth()->user()->id,
             ]);
-        } else {
-            $ad = Ad::find($id);
-            $ad->title = request('title');
-            $ad->description = request('description');
-            $ad->save();
         }
 
         return redirect('/'.$ad->id);
