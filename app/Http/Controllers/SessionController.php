@@ -23,7 +23,7 @@ class SessionController extends Controller
         if(User::whereName(request('name'))->first()) {
             if (!auth()->attempt(request(['name', 'password']))) {
                 return back()->withErrors([
-                    'message' => 'Некорректный пароль для пользователя '.request('name')
+                    'message' => 'Incorrect password for user '.request('name')
                 ]);
             }
         } else {

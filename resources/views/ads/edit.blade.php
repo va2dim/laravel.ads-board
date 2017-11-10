@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="blog-main col-sm-8">
+    <div class="blog-main col-sm-10">
 
         <form action="/edit" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}

@@ -18,7 +18,8 @@ class CreateAdsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->integer('user_id');
-            $table->timestamp('created_at');
+            $table->timestamps();
+            //$table->timestamp('created_at');
         });
     }
 

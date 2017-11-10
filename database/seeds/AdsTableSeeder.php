@@ -11,11 +11,6 @@ class AdsTableSeeder extends Seeder
      */
     public function run()
     {
-/*
-        factory(App\User::class, 50)->create()->each(function ($u) {
-            $u->ads()->save(factory(App\Ad::class)->make());
-        });
-*/
         $faker = Faker\Factory::create();
 
         foreach(range(1, 55) as $index) {
@@ -30,7 +25,7 @@ class AdsTableSeeder extends Seeder
                 'user_id' => \App\User::inRandomOrder()->first()->id,
                 'created_at' => $dt,
             ]);
-
         }
+
     }
 }

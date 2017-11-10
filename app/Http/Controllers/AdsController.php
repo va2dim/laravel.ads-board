@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 
+
 class AdsController extends Controller
 {
     public function __construct()
@@ -36,6 +37,7 @@ class AdsController extends Controller
             $ad = Ad::find(request('id'));
             $ad->title = request('title');
             $ad->description = request('description');
+            $ad->save();
         } else {
             $ad = Ad::create([
               'title' => request('title'),
